@@ -4,9 +4,14 @@ namespace App;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
+    use Sluggable;
+
+    const PATH_POST_IMAGE = 'img/upload/';
+    const POST_IMAGE_DEFAULT = 'no-image.png';
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
 
@@ -29,6 +34,15 @@ class Post extends Model
         );
     }
 
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
     public static function add($fields)
     {
         $post = new static;
@@ -47,7 +61,7 @@ class Post extends Model
 
     public function remove()
     {
-        Storage::delete('img/' . $this->image);
+        Storage::delete(Post::PATH_POST_IMAGE . $this->image);
         $this->delete();
     }
 
@@ -55,9 +69,9 @@ class Post extends Model
     {
         if($image == null) { return; }
 
-        Storage::delete('img/' . $this->image);
+        Storage::delete(Post::PATH_POST_IMAGE . $this->image);
         $filename = str_random(10) . '.' . $image->extension();
-        $image->saveAs('img', $filename);
+        $image->saveAs(Post::PATH_POST_IMAGE, $filename);
         $this->image = $filename;
         $this->save();
     }
@@ -66,10 +80,10 @@ class Post extends Model
     {
         if($this->image == null)
         {
-            return '/img/no-image.png';
+            return Post::PATH_POST_IMAGE . Post::POST_IMAGE_DEFAULT;
         }
 
-        return '/img/' . $this->image;
+        return Post::PATH_POST_IMAGE . $this->image;
     }
 
     public function setCategory($id)

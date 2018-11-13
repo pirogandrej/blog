@@ -16978,7 +16978,7 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./resources/sass/custom.scss":
+/***/ "./resources/sass/custom-admin.scss":
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -16990,7 +16990,7 @@ $(document).ready(function () {
 
 __webpack_require__("./resources/js/app.js");
 __webpack_require__("./resources/sass/app.scss");
-module.exports = __webpack_require__("./resources/sass/custom.scss");
+module.exports = __webpack_require__("./resources/sass/custom-admin.scss");
 
 
 /***/ })

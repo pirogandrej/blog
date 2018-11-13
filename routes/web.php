@@ -1,9 +1,5 @@
 <?php
 
-Route::get('/', 'SandiController@common');
-Route::get('/company', 'SandiController@company');
-Route::get('/blog', 'SandiController@blog');
-
 //*=== ADMIN ===*
 
 Route::group(['prefix'=>'admin','namespace'=>'Admin'], function (){

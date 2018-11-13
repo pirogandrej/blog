@@ -40,6 +40,7 @@ class User extends Authenticatable
     {
         $user = new static;
         $user->fill($fields);
+        $user->password = bcrypt($fields['password']);
         $user->save();
 
         return $user;
@@ -48,6 +49,7 @@ class User extends Authenticatable
     public function edit($fields)
     {
         $this->fill($fields);
+        $this->password = bcrypt($fields['password']);
 
         $this->save();
     }

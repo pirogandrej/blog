@@ -3,11 +3,12 @@
 @section('content')
 
     <div class="content-wrapper">
-
         <section class="content-header">
-            <h1>ADMIN - SANDI+</h1>
+            <h1>
+                Admin
+                <small>blog</small>
+            </h1>
         </section>
-
         <section class="content">
             <div class="box">
                 <div class="box-header with-border">
@@ -17,11 +18,10 @@
                     Текст инструкции по пользованию админкой
                 </div>
                 <div class="box-footer">
-                    Компания SANDI+
+                    blog
                 </div>
             </div>
         </section>
-
     </div>
 
 @endsection
