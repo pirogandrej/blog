@@ -1,7 +1,3 @@
-//body {
-//  height: 100vh;
-//}
-
 button.button-delete
 {
   background: transparent;
@@ -10,9 +6,17 @@ button.button-delete
   padding: 0;
 }
 
-//.content-wrapper {
-//  height: 100vh;
-//}
+.img-circle{
+  border-radius: 50%;
+}
+
+.navbar-custom-menu>.navbar-nav>li {
+  margin-right: 30px;
+}
+
+.navbar-nav{
+  flex-direction: row;
+}
 
 table.table form
 {

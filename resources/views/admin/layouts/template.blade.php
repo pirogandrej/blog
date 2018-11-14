@@ -42,11 +42,11 @@
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="../../index2.html" class="logo">
+                <a href="{{route('dashboard.index')}}" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>A</b>LT</span>
+                    <span class="logo-mini"><b>A</b></span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Admin</b>LTE</span>
+                    <span class="logo-lg"><b>Admin</b></span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
@@ -146,16 +146,15 @@
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="{{ asset('img/admin/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Alexander Pierce</span>
+                                    <span class="hidden-xs">Andrej Pirog</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
                                         <img src="{{ asset('img/admin/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
-
                                         <p>
-                                            Alexander Pierce - Web Developer
-                                            <small>Member since Nov. 2012</small>
+                                            Andrej Pirog
+                                            <small>Web Developer</small>
                                         </p>
                                     </li>
                                     <!-- Menu Body -->
@@ -224,24 +223,50 @@
                     <ul class="sidebar-menu">
                         <li class="header">MAIN NAVIGATION</li>
                         <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-dashboard"></i> <span>Админ-панель</span>
+                            <a href="{{route('dashboard.index')}}">
+                                <i class="fa fa-dashboard"></i>
+                                <span>Админ-панель</span>
                             </a>
                         </li>
-                        <li><a href="#"><i class="fa fa-sticky-note-o"></i> <span>Посты</span></a></li>
-                        <li><a href="#"><i class="fa fa-list-ul"></i> <span>Категории</span></a></li>
-                        <li><a href="#"><i class="fa fa-tags"></i> <span>Теги</span></a></li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-commenting"></i> <span>Комментарии</span>
-                                <span class="pull-right-container">
-              <small class="label pull-right bg-green">5</small>
-            </span>
+                                <i class="fa fa-sticky-note-o"></i>
+                                <span>Посты</span>
                             </a>
                         </li>
-                        <li><a href="#"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
-                        <li><a href="#"><i class="fa fa-user-plus"></i> <span>Подписчики</span></a></li>
-
+                        <li>
+                            <a href="{{route('categories.index')}}">
+                                <i class="fa fa-list-ul"></i>
+                                <span>Категории</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('tags.index')}}">
+                                <i class="fa fa-tags"></i>
+                                <span>Теги</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-commenting"></i>
+                                <span>Комментарии</span>
+                                <span class="pull-right-container">
+                                    <small class="label pull-right bg-green">5</small>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('users.index')}}">
+                                <i class="fa fa-users"></i>
+                                <span>Пользователи</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-user-plus"></i>
+                                <span>Подписчики</span>
+                            </a>
+                        </li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -253,9 +278,9 @@
 
             <footer class="main-footer">
                 <div class="pull-right hidden-xs">
-                    <b>Version</b> 2.3.7
+                    <b>Version</b> 1.0.0
                 </div>
-                <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com/">Almsaeed Studio</a>.</strong> All rights
+                <strong>Copyright &copy; 2018 <a href="#">Andrej Pirog</a>.</strong> All rights
                 reserved.
             </footer>
 

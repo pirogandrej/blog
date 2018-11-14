@@ -34,9 +34,9 @@ mix
         ],
         'public/js/admin.js')
 
-    .version()
+    .version();
 
-    .browserSync('blog.loc');
+    // mix.browserSync('blog.loc');
 
 mix.copy('resources/admin/bootstrap/fonts','public/fonts');
 mix.copy('resources/admin/dist/fonts','public/fonts');

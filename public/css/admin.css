@@ -15297,6 +15297,21 @@ button.button-delete {
   padding: 0;
 }
 
+.img-circle {
+  border-radius: 50%;
+}
+
+.navbar-custom-menu > .navbar-nav > li {
+  margin-right: 30px;
+}
+
+.navbar-nav {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 table.table form {
   display: inline-block;
 }
