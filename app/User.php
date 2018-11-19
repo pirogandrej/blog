@@ -19,7 +19,7 @@ class User extends Authenticatable
     const AVATAR_DEFAULT = 'no-user-image.jpg';
 
     protected $fillable = [
-        'name', 'email',
+        'name', 'email'
     ];
 
     protected $hidden = [
@@ -40,7 +40,6 @@ class User extends Authenticatable
     {
         $user = new static;
         $user->fill($fields);
-        $user->password = bcrypt($fields['password']);
         $user->save();
 
         return $user;
@@ -49,8 +48,6 @@ class User extends Authenticatable
     public function edit($fields)
     {
         $this->fill($fields);
-        $this->password = bcrypt($fields['password']);
-
         $this->save();
     }
 
@@ -59,13 +56,13 @@ class User extends Authenticatable
         if($password != null)
         {
             $this->password = bcrypt($password);
+            $this->save();
         }
-        $this->save();
     }
 
     public function remove()
     {
-        Storage::delete(User::PATH_AVATAR_IMAGE . $this->image);
+        $this->removeAvatar();
         $this->delete();
     }
 
@@ -73,15 +70,20 @@ class User extends Authenticatable
     {
         if($image == null) { return; }
 
-        if($this->avatar != null)
-        {
-            Storage::delete(User::PATH_AVATAR_IMAGE . $this->avatar);
-        }
+        $this->removeAvatar();
 
         $filename = str_random(10) . '.' . $image->extension();
         $image->storeAs(User::PATH_AVATAR_IMAGE, $filename);
         $this->avatar = $filename;
         $this->save();
+    }
+
+    public function removeAvatar()
+    {
+        if($this->avatar != null)
+        {
+            Storage::delete(User::PATH_AVATAR_IMAGE . $this->avatar);
+        }
     }
 
     public function getImage()
