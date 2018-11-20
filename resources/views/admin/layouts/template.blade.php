@@ -229,7 +229,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{route('posts.index')}}">
                                 <i class="fa fa-sticky-note-o"></i>
                                 <span>Посты</span>
                             </a>
