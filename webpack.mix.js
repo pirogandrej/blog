@@ -26,10 +26,11 @@ mix
         'resources/admin/dist/js/app.min.js',
         'resources/admin/dist/js/demo.js',
         'resources/admin/plugins/select2/select2.full.min.js',
-        'resources/plugins/datepicker/bootstrap-datepicker.js',
-        'resources/plugins/iCheck/icheck.min.js',
-        'resources/plugins/datatables/jquery.dataTables.min.js',
-        'resources/plugins/datatables/dataTables.bootstrap.min.js',
+        'resources/admin/plugins/datepicker/bootstrap-datepicker.js',
+        'resources/admin/plugins/iCheck/icheck.min.js',
+        'resources/admin/plugins/datatables/jquery.dataTables.min.js',
+        'resources/admin/plugins/datatables/dataTables.bootstrap.min.js',
+        'public/js/scripts-admin.js',
         'public/js/custom-admin.js'
         ],
         'public/js/admin.js')

@@ -35,10 +35,7 @@
                             <label>Категории</label>
                             {{Form::select(
                                 'category_id',
-                                [
-                                    '1' => 'Large',
-                                    '2' => 'Small'
-                                ],
+                                $categories,
                                 null,
                                 ['class' => 'form-control select2']
                             )}}
@@ -47,29 +44,14 @@
                             <label>Теги</label>
                             {{Form::select(
                                 'tags[]',
-                                [
-                                    '1' => 'Large',
-                                    '2' => 'Small'
-                                ],
+                                $tags,
                                 null,
                                 [
                                     'class' => 'form-control select2',
-                                    'multiple' => 'multiple'/*,
-                                    'data-placeholder' => 'Выберите теги'*/
+                                    'multiple' => 'multiple',
+                                    'data-placeholder' => 'Выберите теги'
                                  ]
                             )}}
-                        </div>
-                        <div class="form-group">
-                            <label>Теги</label>
-                            <select class="form-control select2" multiple="multiple" data-placeholder="Выберите теги" style="width: 100%;">
-                                <option>Alabama</option>
-                                <option>Alaska</option>
-                                <option>California</option>
-                                <option>Delaware</option>
-                                <option>Tennessee</option>
-                                <option>Texas</option>
-                                <option>Washington</option>
-                            </select>
                         </div>
                         <div class="form-group">
                             <label>Дата:</label>

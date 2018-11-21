@@ -15,7 +15,7 @@ class Post extends Model
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
 
-    protected $fillable = ['title','content'];
+    protected $fillable = ['title','content','date'];
 
     public function category(){
         return $this->hasOne(Category::class);
@@ -143,6 +143,10 @@ class Post extends Model
         }
 
         return $this->setFeatured();
+    }
+
+    public function setDateAttribute($value){
+        dd($value);
     }
 
 }
