@@ -5,12 +5,13 @@ namespace App;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Carbon\Carbon;
 
 class Post extends Model
 {
     use Sluggable;
 
-    const PATH_POST_IMAGE = 'img/upload/';
+    const PATH_POST_IMAGE = 'img/posts/';
     const POST_IMAGE_DEFAULT = 'no-image.png';
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
@@ -61,17 +62,23 @@ class Post extends Model
 
     public function remove()
     {
-        Storage::delete(Post::PATH_POST_IMAGE . $this->image);
+        $this->removeImage();
         $this->delete();
+    }
+
+    public function removeImage(){
+        if( $this->image != null ){
+            Storage::delete(public_path(Post::PATH_POST_IMAGE) . $this->image);
+        }
     }
 
     public function uploadImage($image)
     {
         if($image == null) { return; }
 
-        Storage::delete(Post::PATH_POST_IMAGE . $this->image);
+        $this->removeImage();
         $filename = str_random(10) . '.' . $image->extension();
-        $image->saveAs(Post::PATH_POST_IMAGE, $filename);
+        $image->storeAs(public_path(Post::PATH_POST_IMAGE), $filename);
         $this->image = $filename;
         $this->save();
     }
@@ -80,10 +87,10 @@ class Post extends Model
     {
         if($this->image == null)
         {
-            return Post::PATH_POST_IMAGE . Post::POST_IMAGE_DEFAULT;
+            return public_path(Post::PATH_POST_IMAGE) . Post::POST_IMAGE_DEFAULT;
         }
 
-        return Post::PATH_POST_IMAGE . $this->image;
+        return public_path(Post::PATH_POST_IMAGE) . $this->image;
     }
 
     public function setCategory($id)
@@ -146,7 +153,8 @@ class Post extends Model
     }
 
     public function setDateAttribute($value){
-        dd($value);
+        $date = Carbon::createFromFormat('d/m/y',$value)->format('Y/m/d');
+        $this->attributes['date'] = $date;
     }
 
 }
