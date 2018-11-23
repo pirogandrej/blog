@@ -19,11 +19,11 @@ class Post extends Model
     protected $fillable = ['title','content','date'];
 
     public function category(){
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function author(){
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function tags(){
@@ -68,7 +68,7 @@ class Post extends Model
 
     public function removeImage(){
         if( $this->image != null ){
-            Storage::delete(public_path(Post::PATH_POST_IMAGE) . $this->image);
+            Storage::delete(Post::PATH_POST_IMAGE . $this->image);
         }
     }
 
@@ -78,7 +78,7 @@ class Post extends Model
 
         $this->removeImage();
         $filename = str_random(10) . '.' . $image->extension();
-        $image->storeAs(public_path(Post::PATH_POST_IMAGE), $filename);
+        $image->storeAs(Post::PATH_POST_IMAGE, $filename);
         $this->image = $filename;
         $this->save();
     }
@@ -87,10 +87,10 @@ class Post extends Model
     {
         if($this->image == null)
         {
-            return public_path(Post::PATH_POST_IMAGE) . Post::POST_IMAGE_DEFAULT;
+            return Post::PATH_POST_IMAGE . Post::POST_IMAGE_DEFAULT;
         }
 
-        return public_path(Post::PATH_POST_IMAGE) . $this->image;
+        return '/'.Post::PATH_POST_IMAGE . $this->image;
     }
 
     public function setCategory($id)
@@ -153,8 +153,25 @@ class Post extends Model
     }
 
     public function setDateAttribute($value){
-        $date = Carbon::createFromFormat('d/m/y',$value)->format('Y/m/d');
+        $date = Carbon::createFromFormat('d/m/y', $value)->format('Y/m/d');
         $this->attributes['date'] = $date;
+    }
+
+    public function getDateAttribute($value){
+        $date = Carbon::createFromFormat('Y/m/d', $value)->format('d/m/Y');
+        return $date;
+    }
+
+    public function getCategoryTitle(){
+        return ($this->category != null)
+            ? $this->category->title
+            : 'Нет категории';
+    }
+
+    public function getTagsTitles(){
+        return (!$this->tags->isEmpty())
+            ? implode(', ', $this->tags->pluck('title')->all())
+            : 'Нет тегов';
     }
 
 }

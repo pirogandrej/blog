@@ -13,6 +13,7 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::all();
+//        dd($posts);
 
         return view('admin.posts.index', ['posts'=>$posts]);
     }
@@ -44,14 +45,19 @@ class PostsController extends Controller
         return redirect()->route('posts.index');
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $categories = Category::pluck('title', 'id')->all();
+        $tags = Tag::pluck('title', 'id')->all();
+        $selectedTags = $post->tags->pluck('id')->all();
+
+        return view('admin.posts.edit', compact(
+            'categories',
+            'tags',
+            'post',
+            'selectedTags'
+        ));
     }
 
     public function update(Request $request, $id)

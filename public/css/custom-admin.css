@@ -5,6 +5,10 @@ button.button-delete {
   padding: 0;
 }
 
+#example1_wrapper{
+  display: block;
+}
+
 .img-circle {
   border-radius: 50%;
 }

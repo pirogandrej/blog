@@ -15,7 +15,7 @@ class User extends Authenticatable
     const IS_NORMAL = 0;
     const IS_BANNED = 1;
     const IS_ACTIVE = 0;
-    const PATH_AVATAR_IMAGE = 'img/upload/avatar/';
+    const PATH_AVATAR_IMAGE = 'img/avatar/';
     const AVATAR_DEFAULT = 'no-user-image.jpg';
 
     protected $fillable = [
