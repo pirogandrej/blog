@@ -70,10 +70,8 @@
                                 <input  type="text"
                                         class="form-control pull-right"
                                         id="datepicker"
-                                        {{--value="1/1/2017"--}}
-                                        value="{{ dd($post['date']) }}"
-{{--                                        value="{{ $post->getDateAttribute('1/1/2017') }}"--}}
-                                        {{--name="date"--}}
+                                        value="{{ $post['dateOfPost'] }}"
+                                        name="dateOfPost"
                                 >
                             </div>
                         </div>

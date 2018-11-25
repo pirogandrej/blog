@@ -25,7 +25,7 @@ class AddImageToPosts extends Migration
      */
     public function down()
     {
-        Shema::table('posts', function (Blueprint $table){
+        Schema::table('posts', function (Blueprint $table){
             $table->dropColumn('image');
         });
     }

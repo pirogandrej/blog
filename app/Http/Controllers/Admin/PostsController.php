@@ -13,7 +13,6 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::all();
-//        dd($posts);
 
         return view('admin.posts.index', ['posts'=>$posts]);
     }
@@ -31,7 +30,7 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'content' => 'required',
-            'date' => 'required',
+            'dateOfPost' => 'required',
             'image' => 'nullable|image'
         ]);
 
@@ -62,7 +61,17 @@ class PostsController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        $this->validate($request, [
+            'title' => 'required',
+            'dateOfPost' => 'required',
+            'image' => 'nullable|image'
+        ]);
+
+        $post->edit($request->all());
+
+        return redirect()->route('posts.index');
     }
 
     public function destroy($id)
