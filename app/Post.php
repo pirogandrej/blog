@@ -88,10 +88,10 @@ class Post extends Model
     {
         if($this->image == null)
         {
-            return Post::PATH_POST_IMAGE . Post::POST_IMAGE_DEFAULT;
+            return '/' . Post::PATH_POST_IMAGE . Post::POST_IMAGE_DEFAULT;
         }
 
-        return '/'.Post::PATH_POST_IMAGE . $this->image;
+        return '/' . Post::PATH_POST_IMAGE . $this->image;
     }
 
     public function setCategory($id)

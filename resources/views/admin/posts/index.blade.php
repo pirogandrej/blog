@@ -11,17 +11,13 @@
             </h1>
         </section>
         <section class="content">
-            {{Form::open([
-                'route' => 'posts.store',
-                'files' => true
-            ])}}
             <div class="box">
                 @include('admin.errors')
                 <div class="box-body">
                     <div class="form-group">
                         <a href="{{ route('posts.create') }}" class="btn btn-success">Добавить</a>
                     </div>
-                    <table id="tablePost" class="table table-bordered table-striped">
+                    <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -44,6 +40,7 @@
                                     </td>
                                     <td>
                                         <a href="{{route('posts.edit', $post->id)}}" class="fa fa-pencil"></a>
+                                        {{--{{dd($post->id)}}--}}
                                         {!! Form::open(['route' => ['posts.destroy', $post->id], 'method'=>'delete']) !!}
                                             <button onclick="return confirm('Вы уверены?')" type="submit" class="button-delete">
                                                 <i class="fa fa-remove"></i>
@@ -56,7 +53,6 @@
                     </table>
                 </div>
             </div>
-            {{Form::close()}}
         </section>
     </div>
 @endsection

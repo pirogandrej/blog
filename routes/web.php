@@ -1,5 +1,8 @@
 <?php
 
+Route::get('/', 'HomeController@index')->name('home.index');
+
+
 //*=== ADMIN ===*
 
 Route::group(['prefix'=>'admin','namespace'=>'Admin'], function (){

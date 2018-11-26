@@ -5,7 +5,7 @@ button.button-delete {
   padding: 0;
 }
 
-#example1_wrapper{
+.form-inline {
   display: block;
 }
 
