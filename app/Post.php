@@ -16,8 +16,7 @@ class Post extends Model
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
 
-    protected $fillable = ['title','content','dateOfPost'];
-//    protected $dates = ['dateOfPost'];
+    protected $fillable = ['title','content','dateOfPost','description'];
 
     public function category(){
         return $this->belongsTo(Category::class, 'category_id');
@@ -154,15 +153,12 @@ class Post extends Model
     }
 
     public function setDateOfPostAttribute($value){
-//        dd($value);
         $date = Carbon::createFromFormat('d/m/y', $value)->format('Y-m-d');
         $this->attributes['dateOfPost'] = $date;
     }
 
     public function getDateOfPostAttribute($value){
-//        dd($value);
         $date = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/y');
-//        dd($date11);
         return $date;
     }
 
@@ -178,9 +174,9 @@ class Post extends Model
             : 'Нет тегов';
     }
 
-//    public function getDates()
-//    {
-//        return array('dateOfPost');
-//    }
+    public function getCategoryID()
+    {
+        return $this->category != null ? $this->category->id : null;
+    }
 
 }
