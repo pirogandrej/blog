@@ -153,13 +153,13 @@ class Post extends Model
     }
 
     public function setDateOfPostAttribute($value){
-        $date = Carbon::createFromFormat('d/m/y', $value)->format('Y-m-d');
-        $this->attributes['dateOfPost'] = $date;
+        $this->date = Carbon::createFromFormat('d/m/y', $value)->format('Y-m-d');
+        $this->attributes['dateOfPost'] = $this->date;
     }
 
     public function getDateOfPostAttribute($value){
-        $date = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/y');
-        return $date;
+        $this->date = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/y');
+        return $this->date;
     }
 
     public function getCategoryTitle(){
@@ -177,6 +177,11 @@ class Post extends Model
     public function getCategoryID()
     {
         return $this->category != null ? $this->category->id : null;
+    }
+
+    public function getDate()
+    {
+        return Carbon::createFromFormat('d/m/y', $this->dateOfPost)->format('F d, Y');
     }
 
 }
