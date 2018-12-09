@@ -1,0 +1,1 @@
+<img src="/svg/404.svg" alt="404">

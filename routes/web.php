@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'HomeController@index')->name('home.index');
+Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
 
 
 //*=== ADMIN ===*
