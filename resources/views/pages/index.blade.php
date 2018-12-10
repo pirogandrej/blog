@@ -19,7 +19,7 @@
                             <div class="post-content">
                                 <header class="entry-header text-center text-uppercase">
                                     <h6>
-                                        <a href="#">
+                                        <a href="{{route('category.show', $post->category->slug)}}">
                                             {{$post->getCategoryTitle()}}
                                         </a>
                                     </h6>
