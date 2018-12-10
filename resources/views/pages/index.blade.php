@@ -1,3 +1,4 @@
+{{--{{dd($posts)}}--}}
 @extends('layouts.template')
 
 @section('content')
@@ -19,7 +20,7 @@
                                 <header class="entry-header text-center text-uppercase">
                                     <h6>
                                         <a href="#">
-                                            {{$post->category->title}}
+                                            {{$post->getCategoryTitle()}}
                                         </a>
                                     </h6>
 

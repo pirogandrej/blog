@@ -2,6 +2,8 @@
 
 Route::get('/', 'HomeController@index')->name('home.index');
 Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
+Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
+Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
 
 
 //*=== ADMIN ===*

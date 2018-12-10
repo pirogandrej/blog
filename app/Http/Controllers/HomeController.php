@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Tag;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -16,5 +18,20 @@ class HomeController extends Controller
     {
         $post = Post::where('slug', $slug)->firstOrFail();
         return view('pages.show', compact('post'));
+    }
+
+    public function tag($slug)
+    {
+        $tag = Tag::where('slug', $slug)->firstOrFail();
+        $posts = $tag->posts()->where('status', 1)->paginate(2);
+        return view('pages.list', ['posts' => $posts]);
+    }
+
+    public function category($slug)
+    {
+//        dd(1);
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $posts = $category->posts()->where('status', 1)->paginate(2);;
+        return view('pages.list', ['posts' => $posts]);
     }
 }
