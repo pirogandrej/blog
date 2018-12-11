@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Carbon\Carbon;
+use App\Category;
 
 class Post extends Model
 {
@@ -16,7 +17,7 @@ class Post extends Model
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
 
-    protected $fillable = ['title','content','dateOfPost','description'];
+    protected $fillable = ['title','content','dateOfPost','description', 'category_id'];
 
     public function category(){
         return $this->belongsTo(Category::class, 'category_id');
@@ -211,6 +212,10 @@ class Post extends Model
     public function related()
     {
         return self::all()->except($this->id);
+    }
+
+    public function hasCategory(){
+        return $this->category != null ? true : false;
     }
 
 }

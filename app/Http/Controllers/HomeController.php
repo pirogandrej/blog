@@ -11,7 +11,19 @@ class HomeController extends Controller
 {
     public function index(){
         $posts = Post::paginate(2);
-        return view('pages.index', compact('posts'));
+
+        $popularPosts = Post::orderBy('views', 'desc')->take(3)->get();
+        $featuredPosts = Post::where('is_featured', 1)->take(3)->get();
+        $recentPosts = Post::orderBy('dateOfPost', 'desc')->take(4)->get();
+        $categories = Category::all();
+
+        return view('pages.index', [
+            'posts' => $posts,
+            'popularPosts' => $popularPosts,
+            'featuredPosts' => $featuredPosts,
+            'recentPosts' => $recentPosts,
+            'categories' => $categories
+            ]);
     }
 
     public function show($slug)
@@ -29,7 +41,6 @@ class HomeController extends Controller
 
     public function category($slug)
     {
-//        dd(1);
         $category = Category::where('slug', $slug)->firstOrFail();
         $posts = $category->posts()->where('status', 1)->paginate(2);;
         return view('pages.list', ['posts' => $posts]);
