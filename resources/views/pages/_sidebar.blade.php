@@ -61,10 +61,10 @@
                         </div>
                         <div class="p-content">
                             <a href="{{route('post.show', $post->slug)}}" class="text-uppercase">
-                                Home is peaceful Place
+                                {{$post->title}}
                             </a>
                             <span class="p-date">
-                                February 15, 2016
+                                {{$post->getDate()}}
                             </span>
                         </div>
                     </div>
@@ -75,30 +75,16 @@
         <aside class="widget border pos-padding">
             <h3 class="widget-title text-uppercase text-center">Categories</h3>
             <ul>
+                @foreach($categories as $category)
                 <li>
-                    <a href="#">Food & Drinks</a>
-                    <span class="post-count pull-right"> (2)</span>
+                    <a href="{{route('category.show', $category->slug)}}">
+                        {{$category->title}}
+                    </a>
+                    <span class="post-count pull-right">
+                        ({{$category->posts()->count()}})
+                    </span>
                 </li>
-                <li>
-                    <a href="#">Travel</a>
-                    <span class="post-count pull-right"> (2)</span>
-                </li>
-                <li>
-                    <a href="#">Business</a>
-                    <span class="post-count pull-right"> (2)</span>
-                </li>
-                <li>
-                    <a href="#">Story</a>
-                    <span class="post-count pull-right"> (2)</span>
-                </li>
-                <li>
-                    <a href="#">DIY & Tips</a>
-                    <span class="post-count pull-right"> (2)</span>
-                </li>
-                <li>
-                    <a href="#">Lifestyle</a>
-                    <span class="post-count pull-right"> (2)</span>
-                </li>
+                @endforeach
             </ul>
         </aside>
 
