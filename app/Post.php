@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Carbon\Carbon;
-use App\Category;
+//use App\Category;
+//use App\Comment;
 
 class Post extends Model
 {
@@ -25,6 +26,10 @@ class Post extends Model
 
     public function author(){
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
     }
 
     public function tags(){
@@ -220,6 +225,10 @@ class Post extends Model
 
     public static function getPopularPosts(){
         return self::orderBy('views', 'desc')->take(3)->get();
+    }
+
+    public function getComments(){
+        return $this->comments()->where('status', 1)->get();
     }
 
 }

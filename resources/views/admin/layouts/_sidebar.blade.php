@@ -25,12 +25,12 @@
         </a>
     </li>
     <li>
-        <a href="#">
+        <a href="/admin/comments">
             <i class="fa fa-commenting"></i>
             <span>Комментарии</span>
             <span class="pull-right-container">
-                                    <small class="label pull-right bg-green">5</small>
-                                </span>
+                <small class="label pull-right bg-green">5</small>
+            </span>
         </a>
     </li>
     <li>
