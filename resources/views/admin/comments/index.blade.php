@@ -41,18 +41,27 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($comments as $comment)
                         <tr>
-                            <td>1</td>
-                            <td>Прикольная статья! Спасибо!
+                            <td>{{$comment->id}}</td>
+                            <td>
+                                {{$comment->text}}
                             </td>
-                            <td><a href="edit.html" class="fa fa-thumbs-o-up"></a> <a href="#" class="fa fa-remove"></a></td>
+                            <td>
+                                @if($comment->status == 1)
+                                    <a href="/admin/comments/toggle/{{$comment->id}}" class="fa fa-lock"></a>
+                                @else
+                                    <a href="/admin/comments/toggle/{{$comment->id}}" class="fa fa-thumbs-o-up"></a>
+                                @endif
+                                {!! Form::open(['route' => ['comments.destroy', $comment->id], 'method'=>'delete']) !!}
+                                <button onclick="return confirm('Вы уверены?')" type="submit" class="button-delete">
+                                    <i class="fa fa-remove"></i>
+                                </button>
+                                {!! Form::close() !!}
+                            </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Потрясающе! Теперь буду тренироваться</td>
-                            <td><a href="edit.html" class="fa fa-lock"></a> <a href="#" class="fa fa-remove"></a></td>
-                        </tr>
-                        </tfoot>
+                        @endforeach
+                        </tbody>
                     </table>
                 </div>
                 <!-- /.box-body -->
@@ -62,4 +71,5 @@
         </section>
         <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->@endsection
+    <!-- /.content-wrapper -->
+@endsection
