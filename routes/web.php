@@ -5,6 +5,7 @@ Route::get('/', 'HomeController@index')->name('home.index');
 Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
 Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
 Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
+Route::post('/subscribe', 'SubsController@subscribe');
 
 Route::group(['middleware'=>'guest'], function (){
     Route::get('/register', 'AuthController@registerForm');

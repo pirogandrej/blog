@@ -41,6 +41,7 @@
                                         <a href="{{route('post.show', $post->slug)}}" class="more-link">Continue Reading</a>
                                     </div>
                                 </div>
+                                
                                 <div class="social-share">
                                     <span class="social-share-title pull-left text-capitalize">
                                         By <a href="#">{{$post->author->name}}</a> On {{$post->getDate()}}
