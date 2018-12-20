@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SubscribeEmail;
 use Illuminate\Http\Request;
 use App\Subscription;
+use Illuminate\Support\Facades\Mail;
 
 class SubsController extends Controller
 {
@@ -12,7 +14,16 @@ class SubsController extends Controller
         $this->validate($request, [
             'email' => 'required|email|unique:subscriptions'
         ]);
-        Subscription::add($request->get('email'));
+        $subs = Subscription::add($request->get('email'));
+        $subs->generateToken();
+        Mail::to($subs)->send(new SubscribeEmail($subs));
         return redirect()->back()->with('status','Проверьте Вашу почту');
+    }
+
+    public function verify($token){
+        $subs = Subscription::where('token', $token)->firstOrFail();
+        $subs->token = null;
+        $subs->save();
+        return redirect('/')->with('status', 'Ваша почта подтверждена! Спасибо!');
     }
 }

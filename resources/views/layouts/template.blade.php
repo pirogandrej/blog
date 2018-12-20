@@ -38,25 +38,23 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                <ul class="nav navbar-nav text-uppercase">
-                    <li><a href="/">Homepage</a></li>
-                    <li><a href="/aboutme">ABOUT ME </a></li>
-                    <li><a href="/contact">CONTACT</a></li>
-                </ul>
+                {{--<ul class="nav navbar-nav text-uppercase">--}}
+                    {{--<li><a href="/">Главная</a></li>--}}
+                    {{--<li><a href="/aboutme">О себе </a></li>--}}
+                    {{--<li><a href="/contact">Контакты</a></li>--}}
+                {{--</ul>--}}
 
                 <ul class="nav navbar-nav text-uppercase pull-right">
                     @if(Auth::check())
-                        <li><a href="/profile">My profile</a></li>
-                        <li><a href="/logout">Logout</a></li>
+                        <li><a href="/profile">Изменить профиль</a></li>
+                        <li><a href="/logout">Выйти</a></li>
                     @else
-                        <li><a href="/register">Register</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Регистрация</a></li>
+                        <li><a href="/login">Логин</a></li>
                     @endif
                 </ul>
 
             </div>
-            <!-- /.navbar-collapse -->
-
 
             <div class="show-search">
                 <form role="search" method="get" id="searchform" action="#">
@@ -67,18 +65,22 @@
             </div>
         </div>
     </div>
-    <!-- /.container-fluid -->
 </nav>
 
-@if(session('status'))
-    <div class="alert alert-success">
-        {{session('status')}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @if(session('status'))
+                <div class="alert alert-info">
+                    {{session('status')}}
+                </div>
+            @endif
+        </div>
     </div>
-@endif
+</div>
 
 @yield('content')
 
-<!--footer start-->
 <div id="footer">
     <div class="footer-instagram-section">
         <h3 class="footer-instagram-title text-center text-uppercase">Instagram</h3>
@@ -240,7 +242,6 @@
         </div>
     </div>
 </footer>
-<!-- js files -->
 <script type="text/javascript" src="/js/front.js"></script>
 </body>
 </html>

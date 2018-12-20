@@ -12,7 +12,13 @@
         </section>
         <section class="content">
             <div class="box">
+
+                <div class="box-header">
+                    <h3 class="box-title">Список постов</h3>
+                </div>
+
                 @include('admin.errors')
+
                 <div class="box-body">
                     <div class="form-group">
                         <a href="{{ route('posts.create') }}" class="btn btn-success">Добавить</a>
@@ -40,7 +46,11 @@
                                     </td>
                                     <td>
                                         <a href="{{route('posts.edit', $post->id)}}" class="fa fa-pencil"></a>
-                                        {{--{{dd($post->id)}}--}}
+                                        @if($post->status == 1)
+                                            <a href="/admin/posts/toggle/{{$post->id}}" class="fa fa-lock"></a>
+                                        @else
+                                            <a href="/admin/posts/toggle/{{$post->id}}" class="fa fa-thumbs-o-up"></a>
+                                        @endif
                                         {!! Form::open(['route' => ['posts.destroy', $post->id], 'method'=>'delete']) !!}
                                             <button onclick="return confirm('Вы уверены?')" type="submit" class="button-delete">
                                                 <i class="fa fa-remove"></i>

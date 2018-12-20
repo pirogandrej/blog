@@ -1,14 +1,13 @@
 @extends('layouts.template')
 
 @section('content')
-    <!--main content start-->
     <div class="main-content">
         <div class="container">
             <div class="row">
 
                 <div class="col-md-8">
 
-                    <div class="leave-comment mr0"><!--leave comment-->
+                    <div class="leave-comment mr0">
 
                         <h3 class="text-uppercase">Register</h3>
 
@@ -41,7 +40,7 @@
                             <button type="submit" class="btn send-btn">Register</button>
 
                         </form>
-                    </div><!--end leave comment-->
+                    </div>
                 </div>
 
                 @include('pages._sidebar')
@@ -49,5 +48,4 @@
             </div>
         </div>
     </div>
-    <!-- end main content-->
 @endsection

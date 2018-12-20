@@ -5,15 +5,18 @@
 
 @section('content')
     <div class="content-wrapper">
+
         <section class="content-header">
             <h1>Пользователи</h1>
         </section>
 
         <section class="content">
             <div class="box">
+
                 <div class="box-header">
                     <h3 class="box-title">Список пользователей</h3>
                 </div>
+
                 <div class="box-body">
                     <div class="form-group">
                         <a href="{{route('users.create')}}" class="btn btn-success">Добавить</a>
@@ -25,6 +28,7 @@
                                 <th>Аватар</th>
                                 <th>Имя</th>
                                 <th>E-mail</th>
+                                <th>Админ</th>
                                 <th>Действия</th>
                             </tr>
                         </thead>
@@ -38,6 +42,18 @@
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>
+                                        @if($user->is_admin == 1)
+                                            <a href="/admin/users/toggleAdmin/{{$user->id}}" class="fa fa-lock"></a>
+                                        @else
+                                            <a href="/admin/users/toggleAdmin/{{$user->id}}" class="fa fa-thumbs-o-up"></a>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($user->status == 1)
+                                            <a href="/admin/users/toggle/{{$user->id}}" class="fa fa-lock"></a>
+                                        @else
+                                            <a href="/admin/users/toggle/{{$user->id}}" class="fa fa-thumbs-o-up"></a>
+                                        @endif
                                         <a href="{{route('users.edit', $user->id)}}" class="fa fa-pencil"></a>
                                         {!! Form::open(['route' => ['users.destroy', $user->id], 'method'=>'delete']) !!}
                                             <button onclick="return confirm('Вы уверены?')" type="submit" class="button-delete">

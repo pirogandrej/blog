@@ -6,7 +6,6 @@
         <section class="content-header">
             <h1>
                 Admin
-                <small>blog</small>
             </h1>
         </section>
         <section class="content">
@@ -16,9 +15,6 @@
                 </div>
                 <div class="box-body">
                     Текст инструкции по пользованию админкой
-                </div>
-                <div class="box-footer">
-                    blog
                 </div>
             </div>
         </section>

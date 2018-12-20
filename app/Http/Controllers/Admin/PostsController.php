@@ -84,4 +84,11 @@ class PostsController extends Controller
         Post::find($id)->remove();
         return redirect()->route('posts.index');
     }
+
+    public function toggle($id){
+        $post = Post::find($id);
+        $post->toggleStatus($post->status);
+        return redirect()->back();
+    }
+
 }

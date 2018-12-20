@@ -10,7 +10,7 @@ use App\Category;
 class HomeController extends Controller
 {
     public function index(){
-        $posts = Post::paginate(2);
+        $posts = Post::where('status', Post::IS_PUBLIC)->paginate(2);
         return view('pages.index', ['posts' => $posts]);
     }
 

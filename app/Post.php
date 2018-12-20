@@ -5,9 +5,8 @@ namespace App;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-//use App\Category;
-//use App\Comment;
 
 class Post extends Model
 {
@@ -54,7 +53,7 @@ class Post extends Model
     {
         $post = new static;
         $post->fill($fields);
-        $post->user_id = 1;
+        $post->user_id = Auth::user()->id;
         $post->save();
 
         return $post;
@@ -128,11 +127,10 @@ class Post extends Model
 
     public function toggleStatus($value)
     {
-        if($value == null)
+        if(($value === null) || ($value == 1))
         {
             return $this->setDraft();
         }
-
         return $this->setPublic();
     }
 

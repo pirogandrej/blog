@@ -13,8 +13,8 @@ class User extends Authenticatable
 
     const IS_ADMIN = 1;
     const IS_NORMAL = 0;
-    const IS_BANNED = 1;
-    const IS_ACTIVE = 0;
+    const IS_BANNED = 0;
+    const IS_ACTIVE = 1;
     const PATH_AVATAR_IMAGE = 'img/avatar/';
     const AVATAR_DEFAULT = 'no-user-image.jpg';
 
@@ -110,7 +110,7 @@ class User extends Authenticatable
 
     public function toggleAdmin($value)
     {
-        if($value == null)
+        if(($value === null) || ($value == 1))
         {
             return $this->makeNormal();
         }
@@ -132,7 +132,7 @@ class User extends Authenticatable
 
     public function toggleBan($value)
     {
-        if($value == null)
+        if(($value === null) || ($value == 0))
         {
             return $this->unban();
         }

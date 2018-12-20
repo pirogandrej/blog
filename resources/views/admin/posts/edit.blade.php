@@ -113,7 +113,6 @@
                     </div>
 
                     <div class="box-footer">
-                        {{--<button class="btn btn-default">Назад</button>--}}
                         <button class="btn btn-warning pull-right">Изменить</button>
                     </div>
 
