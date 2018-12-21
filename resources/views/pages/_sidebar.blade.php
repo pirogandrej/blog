@@ -13,8 +13,24 @@
             </form>
         </aside>
 
+        <aside class="widget border pos-padding">
+            <h3 class="widget-title text-uppercase text-center">Категории</h3>
+            <ul>
+                @foreach($categories as $category)
+                    <li>
+                        <a href="{{route('category.show', $category->slug)}}">
+                            {{$category->title}}
+                        </a>
+                        <span class="post-count pull-right">
+                        ({{$category->posts()->count()}})
+                    </span>
+                    </li>
+                @endforeach
+            </ul>
+        </aside>
+
         <aside class="widget">
-            <h3 class="widget-title text-uppercase text-center">Popular Posts</h3>
+            <h3 class="widget-title text-uppercase text-center">Популярные посты</h3>
             @foreach($popularPosts as $post)
                 <div class="popular-post">
                     <a href="{{route('post.show', $post->slug)}}" class="popular-img">
@@ -34,7 +50,7 @@
         </aside>
 
         <aside class="widget">
-            <h3 class="widget-title text-uppercase text-center">Featured Posts</h3>
+            <h3 class="widget-title text-uppercase text-center">Избранные посты</h3>
             <div id="widget-feature" class="owl-carousel">
                 @foreach($featuredPosts as $post)
                     <div class="item">
@@ -51,7 +67,7 @@
         </aside>
 
         <aside class="widget pos-padding">
-            <h3 class="widget-title text-uppercase text-center">Recent Posts</h3>
+            <h3 class="widget-title text-uppercase text-center">Последние посты</h3>
             @foreach($recentPosts as $post)
                 <div class="thumb-latest-posts">
                     <div class="media">
@@ -72,22 +88,6 @@
                     </div>
                 </div>
             @endforeach
-        </aside>
-
-        <aside class="widget border pos-padding">
-            <h3 class="widget-title text-uppercase text-center">Categories</h3>
-            <ul>
-                @foreach($categories as $category)
-                <li>
-                    <a href="{{route('category.show', $category->slug)}}">
-                        {{$category->title}}
-                    </a>
-                    <span class="post-count pull-right">
-                        ({{$category->posts()->count()}})
-                    </span>
-                </li>
-                @endforeach
-            </ul>
         </aside>
 
     </div>

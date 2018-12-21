@@ -9,8 +9,10 @@ use App\Category;
 
 class HomeController extends Controller
 {
+    const NUMBER_PAGINATION = 3;
+
     public function index(){
-        $posts = Post::where('status', Post::IS_PUBLIC)->paginate(2);
+        $posts = Post::where('status', Post::IS_PUBLIC)->paginate(HomeController::NUMBER_PAGINATION);
         return view('pages.index', ['posts' => $posts]);
     }
 
@@ -23,14 +25,14 @@ class HomeController extends Controller
     public function tag($slug)
     {
         $tag = Tag::where('slug', $slug)->firstOrFail();
-        $posts = $tag->posts()->where('status', 1)->paginate(2);
+        $posts = $tag->posts()->where('status', 1)->paginate(HomeController::NUMBER_PAGINATION);
         return view('pages.list', ['posts' => $posts]);
     }
 
     public function category($slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
-        $posts = $category->posts()->where('status', 1)->paginate(2);;
+        $posts = $category->posts()->where('status', 1)->paginate(HomeController::NUMBER_PAGINATION);;
         return view('pages.list', ['posts' => $posts]);
     }
 }

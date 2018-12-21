@@ -69,6 +69,7 @@ class Post extends Model
     {
         $this->removeImage();
         $this->delete();
+        return $this;
     }
 
     public function removeImage(){
@@ -148,7 +149,7 @@ class Post extends Model
 
     public function toggleFeatured($value)
     {
-        if($value == null)
+        if(($value === null) || ($value == 1))
         {
             return $this->setStandart();
         }

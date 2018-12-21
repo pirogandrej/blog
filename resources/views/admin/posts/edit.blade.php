@@ -76,23 +76,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label>
-                                    {{Form::checkbox('is_featured', '1', $post->is_featured, ['class'=>'minimal'])}}
-                                </label>
-                                <label>
-                                    Рекомендовать
-                                </label>
-                            </div>
-
-                            <div class="form-group">
-                                <label>
-                                    {{Form::checkbox('status', '1', $post->status, ['class'=>'minimal'])}}
-                                </label>
-                                <label>
-                                    Черновик
-                                </label>
-                            </div>
                         </div>
 
                         <div class="col-md-12">

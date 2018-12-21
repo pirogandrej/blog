@@ -7,7 +7,7 @@
 
     <body class="hold-transition skin-blue sidebar-mini">
 
-        <div class="wrapper">
+        <div id="app" class="wrapper">
 
             <header class="main-header">
 

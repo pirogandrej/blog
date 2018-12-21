@@ -13,8 +13,8 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::all();
-
-        return view('admin.posts.index', ['posts'=>$posts]);
+        $postsFields = self::getPostsFields($posts);
+        return view('admin.posts.index', ['posts'=> $postsFields]);
     }
 
     public function create()
@@ -73,15 +73,13 @@ class PostsController extends Controller
         $post->uploadImage($request->file('image'));
         $post->setCategory($request->get('category_id'));
         $post->setTags($request->get('tags'));
-        $post->toggleStatus($request->get('status'));
-        $post->toggleFeatured($request->get('is_featured'));
-
         return redirect()->route('posts.index');
     }
 
     public function destroy($id)
     {
-        Post::find($id)->remove();
+        $post = Post::find($id)->remove();
+//        return response()->json($post, 200);
         return redirect()->route('posts.index');
     }
 
@@ -89,6 +87,21 @@ class PostsController extends Controller
         $post = Post::find($id);
         $post->toggleStatus($post->status);
         return redirect()->back();
+    }
+
+    public function toggleFeatured($id){
+        $post = Post::find($id);
+        $post->toggleFeatured($post->is_featured);
+        return redirect()->back();
+    }
+
+    public static function getPostsFields($posts){
+        foreach ($posts as $post){
+            $post->image =  asset($post->getImage());
+            $post->CategoryTitle =  $post->getCategoryTitle();
+            $post->tagsTitles = $post->getTagsTitles();
+        }
+        return $posts;
     }
 
 }
