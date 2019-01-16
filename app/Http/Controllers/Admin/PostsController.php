@@ -79,7 +79,6 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id)->remove();
-//        return response()->json($post, 200);
         return redirect()->route('posts.index');
     }
 
@@ -97,7 +96,6 @@ class PostsController extends Controller
 
     public static function getPostsFields($posts){
         foreach ($posts as $post){
-            $post->image =  asset($post->getImage());
             $post->CategoryTitle =  $post->getCategoryTitle();
             $post->tagsTitles = $post->getTagsTitles();
         }

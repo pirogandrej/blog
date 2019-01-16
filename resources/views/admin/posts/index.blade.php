@@ -25,8 +25,6 @@
                         <a href="{{ route('posts.create') }}" class="btn btn-success">Добавить</a>
                     </div>
 
-                    {{--<tableadminposts-component :posts="{{ json_encode($posts) }}"></tableadminposts-component>--}}
-
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -58,7 +56,7 @@
                                             <a href="/admin/posts/toggle/{{$post->id}}" class="fa fa-thumbs-o-up"></a>
                                         @endif
 
-                                        <switch-component></switch-component>
+                                        {{--<switch-component></switch-component>--}}
 
                                     </td>
                                     <td>
