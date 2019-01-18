@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,13 +9,6 @@
     <title>Blog</title>
 
     <link rel="stylesheet" href="/css/front.css">
-
-    <!-- HTML5 shim and Respond.js IE9 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <!--<script src="assets/js/html5shiv.js"></script>-->
-    <!--<script src="assets/js/respond.js"></script>-->
-    {{--<![endif]-->--}}
-
     <link rel="icon" type="image/png" href="/img/front/favicon.png">
 
 </head>
